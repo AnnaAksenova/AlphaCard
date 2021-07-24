@@ -1,0 +1,2 @@
+ru/netolog/test/AlphaCardTest.java
+ ru.netolog.test.AlphaCardTest
