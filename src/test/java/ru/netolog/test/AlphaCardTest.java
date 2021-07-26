@@ -49,28 +49,6 @@ public class AlphaCardTest {
     }
 
     @Test
-    void notRegisterUsersWithLatinLetters() {
-        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Bob Dylan");
-        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+74627682341");
-        driver.findElement(By.className("checkbox__box")).click();
-        driver.findElement(By.className("button")).click();
-        String actualText = driver.findElement(By.cssSelector("[data-test-id=\"name\"].input_invalid .input__sub")).getText();
-        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
-        assertEquals(expectedText.trim(), actualText.trim());
-    }
-
-    @Test
-    void notRegisterUsersWithSymbolsInName() {
-        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Петров+Водкин Иван ");
-        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+75673423489");
-        driver.findElement(By.className("checkbox__box")).click();
-        driver.findElement(By.className("button")).click();
-        String actualText = driver.findElement(By.cssSelector("[data-test-id=\"name\"].input_invalid .input__sub")).getText();
-        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
-        assertEquals(expectedText.trim(), actualText.trim());
-    }
-
-    @Test
     void notRegisterUsersWithEmptyField1() {
         driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+75673423489");
@@ -89,6 +67,28 @@ public class AlphaCardTest {
         driver.findElement(By.className("button")).click();
         String actualText = driver.findElement(By.cssSelector("[data-test-id=\"phone\"].input_invalid .input__sub")).getText();
         String expectedText = "Поле обязательно для заполнения";
+        assertEquals(expectedText.trim(), actualText.trim());
+    }
+
+    @Test
+    void notRegisterUsersWithLatinLetters() {
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Bob Dylan");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+74627682341");
+        driver.findElement(By.className("checkbox__box")).click();
+        driver.findElement(By.className("button")).click();
+        String actualText = driver.findElement(By.cssSelector("[data-test-id=\"name\"].input_invalid .input__sub")).getText();
+        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+        assertEquals(expectedText.trim(), actualText.trim());
+    }
+
+    @Test
+    void notRegisterUsersWithSymbolsInName() {
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Петров+Водкин Иван ");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+75673423489");
+        driver.findElement(By.className("checkbox__box")).click();
+        driver.findElement(By.className("button")).click();
+        String actualText = driver.findElement(By.cssSelector("[data-test-id=\"name\"].input_invalid .input__sub")).getText();
+        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
         assertEquals(expectedText.trim(), actualText.trim());
     }
 
