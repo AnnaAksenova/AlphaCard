@@ -113,4 +113,5 @@ public class AlphaCardTest {
         assertEquals(expectedText.trim(), actualText.trim());
 
     }
+
 }
