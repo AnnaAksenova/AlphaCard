@@ -95,7 +95,7 @@ public class AlphaCardTest {
     @Test
     void notRegisterWithIncorrectNumberFormat() {
         driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Иванов Иван");
-        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+75673423489");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("5643");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.className("button")).click();
         String actualText = driver.findElement(By.cssSelector("[data-test-id=\"phone\"].input_invalid .input__sub")).getText();
@@ -103,4 +103,14 @@ public class AlphaCardTest {
         assertEquals(expectedText.trim(), actualText.trim());
     }
 
+    @Test
+    void consentToDataProcessing() {
+        driver.findElement(By.cssSelector("[data-test-id=\"name\"] input")).sendKeys("Иванов Иван");
+        driver.findElement(By.cssSelector("[data-test-id=\"phone\"] input")).sendKeys("+75673423489");
+        driver.findElement(By.className("button")).click();
+        String actualText = driver.findElement(By.cssSelector("[data-test-id=\"agreement\"].input_invalid .checkbox__text")).getText();
+        String expectedText = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
+        assertEquals(expectedText.trim(), actualText.trim());
+
+    }
 }
